@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/todolist.css">
+</head>
+<body>
+    
+    <header>
+        <section>
+            <label for="title">ToDoList</label>
+            <input type="text" id="title" name="title" placeholder="添加ToDo" required="required" autocomplete="off" />
+        </section>
+    </header>
+    <section>
+        <h2>今日事项 <span id="todocount">0</span></h2>
+        <ol id="todolist" class="demo-box">
+            <!-- <li>
+                <input type="checkbox" name="" id=""> java <a href="javascript:;"></a>
+            </li> -->
+        </ol>
+    </section>
+    <section>
+        <h2>已完成 <span id="doneCount">0</span></h2>
+        <ol id="donelist" class="demo-box">
+            <!-- <li>
+                <input type="checkbox" checked name="" id=""> java <a href="javascript:;"></a>
+            </li> -->
+        </ol>
+    </section>
+    <footer>
+        Copyright &copy; ToDoList
+    </footer>
+
+    <script src="./js/todolist.js"></script>
+</body>
+</html>
