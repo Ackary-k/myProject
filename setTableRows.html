@@ -127,7 +127,7 @@
                 sAge: 39
             },
         ];
-        // render();
+
         // 获取表单元素
         let tbody = document.querySelector('#tbody');
         let tr = tbody.querySelector('tr:first-child');
@@ -140,40 +140,45 @@
         let sureBtn = document.querySelector('#sure');
         let cancleBtn = document.querySelector('#cancle');
         
+        // 删除
         function delData() {
+
             let delBtns = tbody.querySelectorAll('a');
+
             delBtns.forEach(function (delBtn, index) {
                 delBtn.addEventListener('click', function () {
-                    // this.parentElement.parentElement.remove();
                     trData.splice(index, 1)
                     render()
                 })
             });
+
         }
         render();
+
         // 点击事件
         addBtn.addEventListener('click', function () {
             addRow.setAttribute('style', 'display: block;');
         });
 
         sureBtn.addEventListener('click', function () {
-            // if(sID.value.trim() === null) {
-            //     return alert('输入内容不能为空！')
-            // }
+            
+            if(sID.value.trim() === '' || sName.value.trim() === '' || sAge.value.trim() === '') {
+                return alert('输入内容不能为空！')
+            }
+
             addData(sID, sName, sGender, sAge);
             render();
             addRow.setAttribute('style', '');
+            sID.value = '';
+            sName.value = '';
+            sAge.value = '';
+
         });
 
         cancleBtn.addEventListener('click', function () {
             render();
             addRow.setAttribute('style', '');
         });
-
-        // console.log(delBtn);
-        // delBtn.addEventListener('click', function () {
-        //     console.log(this);
-        // })
        
         // 新增一行就是向 trData 中新增一条数据
         function addData(sID, sName, sGender, sAge) {
