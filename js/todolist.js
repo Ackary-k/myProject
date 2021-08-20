@@ -5,8 +5,9 @@
  * 4. 用本地存储数据
 */
 
-let todoInp = document.querySelector('#todolist');
 let titleInp = document.querySelector('#title');
+let todolist = document.querySelector('#todolist');
+let donelist = document.querySelector('#donelist');
 
 getData();
 
@@ -28,13 +29,39 @@ titleInp.addEventListener('keyup', function (e) {
         setData(localData);
         render(data);
 
+        titleInp.value = '';
+
     }
 
 })
 
-// 选择 a 并添加删除事件
+// 选择元素
 function getElements() {
+
     let delBtns = document.querySelectorAll('#todolist a');
+    let checkboxes = document.querySelectorAll('#todolist input, #donelist input');
+    
+    delData(delBtns);
+    
+    checkboxes.forEach( checkbox => {
+
+        checkbox.addEventListener('click', function () {
+            
+            let data = JSON.parse(getData());
+            let index = this.getAttribute('id');
+            // 数组和对象值得调用！！！ 注意哦
+            data[index].done = !data[index].done;
+            setData(data);
+            render(data);
+        });
+
+    });
+}
+
+
+
+// 删除
+function delData(delBtns) {
     delBtns.forEach((delBtn, index) => {
         delBtn.addEventListener('click', function () {
 
@@ -44,9 +71,10 @@ function getElements() {
             setData(data);
             render(data);
 
-        })
+        });
     });
 }
+
 // 将数据存储到本地
 function setData(localData) {
     localStorage.setItem('localData', JSON.stringify(localData));
@@ -68,17 +96,30 @@ function render(data) {
         return;
     }
 
-    let li = '';
-    data.forEach(item => {
-        li += `
-            <li>
-                <input type="checkbox" name="" id=""> ${ item.title } <a href="javascript:;"></a>
-            </li>
-        `;
+    let todo_li = '';
+    let done_li = '';
+
+    data.forEach((item, index) => {
+        if (!item.done) {
+            todo_li += `
+                <li>
+                    <input type="checkbox" name="" id="${ index }"> ${ item.title } <a href="javascript:;"></a>
+                </li>
+            `;
+        } else {
+            done_li += `
+                <li>
+                    <input type="checkbox" checked name="" id="${ index }"> ${ item.title } <a href="javascript:;"></a>
+                </li>
+            `;
+        }
     });
 
-    todoInp.innerHTML = '';
-    todoInp.innerHTML = li;
+    todolist.innerHTML = '';
+    donelist.innerHTML = '';
+    
+    todolist.innerHTML = todo_li;
+    donelist.innerHTML = done_li;
 
     getElements();
 }
