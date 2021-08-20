@@ -38,11 +38,15 @@ titleInp.addEventListener('keyup', function (e) {
 // 选择元素
 function getElements() {
 
-    let delBtns = document.querySelectorAll('#todolist a');
+    let delBtns = document.querySelectorAll('#todolist a, #donelist a');
     let checkboxes = document.querySelectorAll('#todolist input, #donelist input');
     
     delData(delBtns);
-    
+    setCheckbox(checkboxes);
+
+}
+
+function setCheckbox(checkboxes) {
     checkboxes.forEach( checkbox => {
 
         checkbox.addEventListener('click', function () {
