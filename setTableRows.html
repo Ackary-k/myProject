@@ -141,17 +141,20 @@
         let cancleBtn = document.querySelector('#cancle');
         
         // 删除
-        function delData() {
+        function getElements() {
 
             let delBtns = tbody.querySelectorAll('a');
+            delData(delBtns);
+    
+        }
 
+        function delData(delBtns) {
             delBtns.forEach(function (delBtn, index) {
                 delBtn.addEventListener('click', function () {
-                    trData.splice(index, 1)
-                    render()
+                    trData.splice(index, 1);
+                    render();
                 })
             });
-
         }
         render();
 
@@ -165,7 +168,7 @@
             if(sID.value.trim() === '' || sName.value.trim() === '' || sAge.value.trim() === '') {
                 return alert('输入内容不能为空！')
             }
-
+            console.log(sGender.value);
             addData(sID, sName, sGender, sAge);
             render();
             addRow.setAttribute('style', '');
@@ -183,11 +186,13 @@
         // 新增一行就是向 trData 中新增一条数据
         function addData(sID, sName, sGender, sAge) {
             trData.push({
-                sID: sID.value.trim(),
+                sID: Number(sID.value.trim()),
                 sName: sName.value.trim(),
-                sGender: sGender.value,
-                sAge: sAge.value.trim(),
+                // true ? false
+                sGender: sGender.value === 'false' ? false : true,
+                sAge: Number(sAge.value.trim()),
             });
+            // console.log(trData);
         }
 
         // 通过数据渲染页面
@@ -211,7 +216,8 @@
 
             tbody.innerHTML = '';
             tbody.innerHTML = th + tr;
-            delData();
+            getElements();
+            console.log(trData);
         }
 
     </script>
