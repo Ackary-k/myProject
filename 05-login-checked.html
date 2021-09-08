@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录校验</title>
+    
+    <style>
+        table {
+            border: 1px solid #0094ff;
+            margin: 50px auto;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: 1px solid #0094ff;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <td colspan="2">欢迎登录</td>
+            </tr>
+            <tr>
+                <td>用户名：</td>
+                <td><input type="text" id="txtUName"></td>
+            </tr>
+            <tr>
+                <td>密 码：</td>
+                <td><input type="password" id="txtPwd"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" id="login" value="登录">
+                    <input type="button" id="reg" value="注册">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+<script>
+    // 目标：登录时 先 做 登录校验：用户名 和 密码 不能为空格~~！
+    // 思路：
+    // 事件源： 登录按钮
+    // 事件类型：onclick
+    // 事件处理函数：获取 两个文本框的值，判断是否为空
+    
+    let loginBtn = document.querySelector('#login')
+    let regBtn = document.querySelector('#reg')
+
+    loginBtn.addEventListener('click', function () {
+        let username = document.querySelector('#txtUName').value.trim();
+        let password = document.querySelector('#txtPwd').value.trim();
+        
+    })
+
+    regBtn.addEventListener('click', function () {
+        console.log('ok');
+    })
+
+    
+</script>
+
+</html>

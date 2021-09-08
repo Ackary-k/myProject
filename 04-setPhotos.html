@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 20vw;
+            border: 5px solid transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="./images/right.jpg" alt="">
+    <img src="./images/right.jpg" alt="">
+    <img src="./images/right.jpg" alt="">
+    <img src="./images/right.jpg" alt="">
+    <img src="./images/right.jpg" alt="">
+
+</body>
+
+<script>
+
+    /**
+     * for...in 和 for...of 的区别:
+     * 1. 推荐在遍历数组的时候用 for...of; 在循环对象的时候用 for...in
+     * 2. for...in 循环出的是 key; for...of 循环出的是 value
+     * 3. for...of 不能循环普通的对象, 需要通过和 object.keys() 搭配使用
+    */
+    let imgs = document.querySelectorAll('img')
+    for (const item of imgs) {
+        item.addEventListener('mouseenter', function () {
+            this.setAttribute('src', './images/left.jpg')
+        })
+        item.addEventListener('mouseleave', function () {
+            this.setAttribute('src', './images/right.jpg')
+        })
+        item.addEventListener('click', function () {
+            this.setAttribute('src', './images/pressed.jpg')
+        })
+    }
+    
+</script>
+
+</html>

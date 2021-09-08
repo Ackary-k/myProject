@@ -2,6 +2,8 @@
 let todolist = document.querySelector('#todolist');
 let donelist = document.querySelector('#donelist');
 let input = document.querySelector('#title');
+let todocount = document.querySelector('#todocount');
+let donecount = document.querySelector('#donecount');
 
 let localData = new LocalData();
 localData.dataKey = 'todolist';
@@ -81,6 +83,17 @@ function delData(id) {
 
 }
 
+// 统计
+function count() {
+    let todoAmount = todolist.querySelectorAll('li').length;
+    let doneAmount = donelist.querySelectorAll('li').length;
+
+    todocount.innerHTML = todoAmount;
+    donecount.innerHTML = doneAmount;
+
+}
+
+
 // 渲染
 function render() {
 
@@ -116,7 +129,12 @@ function render() {
     todolist.innerHTML = olStr;
     donelist.innerHTML = ulStr;
 
+    // 调用统计数字函数   
+    count()
+
 }
+
+
 
 
 

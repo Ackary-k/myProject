@@ -1,0 +1,2 @@
+# 忽略 npm 安装包
+js/node_modules

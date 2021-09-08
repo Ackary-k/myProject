@@ -62,8 +62,6 @@ function setCheckbox(checkboxes) {
     });
 }
 
-
-
 // 删除
 function delData(delBtns) {
     delBtns.forEach((delBtn, index) => {
